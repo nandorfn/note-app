@@ -1,9 +1,12 @@
 import { ReactNode } from "react";
+import NavbarMenu from "./NavbarMenu";
 
 const Navbar = ({ children }: { children: ReactNode }) => {
     return (
         <div>
-          <div></div>
+          <div>
+            <NavbarMenu />
+          </div>
           <div>
             {children}
           </div>
