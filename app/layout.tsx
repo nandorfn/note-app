@@ -1,9 +1,15 @@
 import './globals.css'
 import Navbar from './components/Navbar'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Poppins } from 'next/font/google'
+import Script from 'next/script'
+import FloatingBtn from './components/FloatingBtn'
 
 const inter = Inter({ subsets: ['latin'] })
+const poppins = Poppins({ 
+    weight: ['400','500', '700'],
+    subsets: ['latin'] 
+  });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,10 +23,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <Navbar>
           {children}
         </Navbar>
+        <FloatingBtn />
+        <Script src="https://kit.fontawesome.com/8839dda52d.js" crossOrigin="anonymous" />
       </body>
     </html>
   )

@@ -1,13 +1,15 @@
 import { ReactNode } from "react";
-import NavbarMenu from "./NavbarMenu";
+import Menu from "./Menu";
+import NavbarDesktop from "./NavbarDesktop";
+import NavbarMobile from "./NavbarMobile";
 
 const Navbar = ({ children }: { children: ReactNode }) => {
     return (
-        <div>
-          <div>
-            <NavbarMenu />
-          </div>
-          <div>
+        <div className="flex">
+            <Menu />
+          <div className="flex flex-col w-full">
+            <NavbarDesktop />
+            <NavbarMobile />
             {children}
           </div>
         </div>
