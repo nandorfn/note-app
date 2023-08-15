@@ -17,6 +17,41 @@ const NoteContainer: React.FC = () => {
               <Note />
               <Note />
               <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
+              <Note />
             </div>
           </div>
         </>

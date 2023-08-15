@@ -1,7 +1,28 @@
+'use client'
+
+import { useState, useEffect } from "react";
 
 const NavbarDesktop: React.FC = () => {
+  const [scrolled, setScrolled] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+    
+  }, []);
+
   return (
-      <div className="hidden lg:block">
+      <div className={`hidden lg:block lg:sticky top-0 ${scrolled && 'bg-white-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-60 shadow-sm' }`}>
         <div className="flex justify-between">
           <div className="flex flex-row items-center bg-white p-4 my-8 mx-10 rounded-xl shadow-sm w-2/4">
             <i className="fa-solid fa-magnifying-glass"></i>

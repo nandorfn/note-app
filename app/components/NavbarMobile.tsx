@@ -22,7 +22,7 @@ const NavbarMobile: React.FC = () => {
 
   return (
     <>
-      <div className="relative lg:hidden bg-white">
+      <div className="relative lg:hidden bg-white z-10">
         <div className="flex justify-between items-center p-4">
           <h1 className="text-xl font-medium">Note</h1>
           <button onClick={handleMenu} type="button">

@@ -17,7 +17,7 @@ const NavbarMenu: React.FC = () => {
 
   return (
     <>
-      <div className="hidden lg:block bg-white w-80 h-auto p-4 shadow-sm">
+      <div className="hidden lg:block lg:sticky top-0 bg-white w-80  h-screen p-4 shadow-sm">
         <div>
           <Image 
             src={logo}
