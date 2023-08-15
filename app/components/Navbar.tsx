@@ -10,7 +10,9 @@ const Navbar = ({ children }: { children: ReactNode }) => {
           <div className="flex flex-col w-full">
             <NavbarDesktop />
             <NavbarMobile />
-            {children}
+            <div className="lg:mx-10">
+              {children}
+            </div>
           </div>
         </div>
     );

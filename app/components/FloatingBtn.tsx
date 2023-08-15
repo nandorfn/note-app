@@ -1,10 +1,6 @@
 'use client'
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-
-import addNote from "../../public/addNote.svg"
-import addTodo from "../../public/addTodo.svg"
 
 const FloatingBtn: React.FC = () => {
   const [activeBtn, setActiveBtn] = useState(false);
@@ -20,22 +16,12 @@ const FloatingBtn: React.FC = () => {
         <div className="sticky bottom-20 pb-10 left-full me-8 lg:me-20 rounded-t-full w-16 bg-white">
           <div className="flex flex-col gap-4">
             <Link href="/create/note">
-              <button className={`${btnStyle} flex justify-center`}>
-                <Image
-                  src={addNote}
-                  width={40}
-                  height={40}
-                  alt="Add Note"
-                />
+              <button className={`${btnStyle} flex justify-center items-center`}>
+                <i className="fa-solid fa-note-sticky fa-fw fa-lg"></i>
               </button>
             </Link>
-            <button className={`${btnStyle} flex justify-center`}>
-              <Image
-                src={addTodo}
-                width={40}
-                height={40}
-                alt="Add Note"
-              />
+            <button className={`${btnStyle} flex justify-center items-center`}>
+              <i className="fa-solid fa-rectangle-list fa-fw fa-lg"></i>
             </button>
           </div>
         </div>
