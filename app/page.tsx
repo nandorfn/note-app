@@ -1,12 +1,12 @@
 import NoteContainer from "./components/NoteContainer";
+import FloatingBtn from "./components/FloatingBtn";
 
 
 export default function Home() {
   return (
     <>
-    <div className="">
       <NoteContainer />
-    </div>
+      <FloatingBtn />
     </>
   )
 }
