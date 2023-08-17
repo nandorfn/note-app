@@ -1,9 +1,7 @@
 'use client'
+import { ReactNode, useState } from "react";
 
-import { useState } from "react";
-import List from "./List";
-
-const NavbarMobile: React.FC = () => {
+const NavbarMobile = ({children}: {children: ReactNode}) => {
   const menuStyle: string = "absolute bg-white w-full h-screen shadow-2xl p-4 duration-500 ease-in-out "
   const [menu, setMenu] = useState(false);
   const handleMenu = (): void => {
@@ -25,7 +23,7 @@ const NavbarMobile: React.FC = () => {
         {menu &&
           <div className={menuStyle}>
             <ul className="flex flex-col gap-8 p-6">
-              <List />
+              {children}
             </ul>
           </div>
         }

@@ -2,14 +2,19 @@ import { ReactNode } from "react";
 import Menu from "./Menu";
 import NavbarDesktop from "./NavbarDesktop";
 import NavbarMobile from "./NavbarMobile";
+import List from "./List";
 
 const Navbar = ({ children }: { children: ReactNode }) => {
   return (
     <div className="flex">
-      <Menu />
+      <Menu>
+        <List />
+      </Menu>
       <div className="flex flex-col w-full">
         <NavbarDesktop />
-        <NavbarMobile />
+        <NavbarMobile>
+          <List />
+        </NavbarMobile>
         <div className="lg:mx-10">
           {children}
         </div>

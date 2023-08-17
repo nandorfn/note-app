@@ -1,9 +1,8 @@
 import Image from "next/image";
 import logo from '../../public/logo.png';
-import List from "./List";
+import { ReactNode } from "react";
 
-
-const NavbarMenu: React.FC = () => {
+const NavbarMenu = ({children}: {children: ReactNode}) => {
 
   return (
     <>
@@ -17,7 +16,7 @@ const NavbarMenu: React.FC = () => {
           />
         </div>
         <ul  className="flex flex-col pt-8 gap-8 p-6">
-          <List />
+          {children}
         </ul>
       </div>
     </>
