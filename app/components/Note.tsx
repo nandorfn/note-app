@@ -1,5 +1,4 @@
 'use client'
-import { sanitize } from 'dompurify';
 import { useState } from "react";
 import NoteMenu from './NoteMenu';
 
