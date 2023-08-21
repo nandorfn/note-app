@@ -7,9 +7,10 @@ interface NoteProps {
     id: number;
   };
   activeNoteId: number | null;
+  handleEdit: (noteId: number) => void;
 }
 
-const NoteMenu: React.FC<NoteProps> = ({ note, activeNoteId }) => {
+const NoteMenu: React.FC<NoteProps> = ({ note, activeNoteId, handleEdit }) => {
   const router = useRouter();
 
   const handleDelete = async ( noteId: number ) => {

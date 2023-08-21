@@ -8,6 +8,7 @@ interface NoteProps {
 }
 
 const NoteContainer: React.FC<NoteProps> = ({notes}) => {
+
   return (
     <>
       <div className="flex flex-col gap-10 bg-white rounded-xl shadow-sm p-8 h-auto w-auto">
