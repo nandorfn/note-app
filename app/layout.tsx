@@ -1,5 +1,4 @@
 import './globals.css'
-import Navbar from './components/Navbar'
 import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
 import Script from 'next/script'

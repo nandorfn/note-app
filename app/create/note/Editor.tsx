@@ -18,8 +18,8 @@ const Editor: React.FC = () => {
   });
   setTitle('');
   setContent('');
-  router.push('/');
-  window.location.reload();
+  router.push('/notes');
+  router.refresh();
   };
 
 

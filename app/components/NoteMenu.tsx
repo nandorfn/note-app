@@ -1,3 +1,5 @@
+import { useRouter } from "next/navigation";
+import axios from "axios";
 interface NoteProps {
   note: {
     title: string;
@@ -8,6 +10,13 @@ interface NoteProps {
 }
 
 const NoteMenu: React.FC<NoteProps> = ({ note, activeNoteId }) => {
+  const router = useRouter();
+
+  const handleDelete = async ( noteId: number ) => {
+    await axios.delete(`/api/notes/${noteId}`);
+    router.refresh();
+  };
+
 
   const btnColor = {
     red: {
@@ -24,7 +33,9 @@ const NoteMenu: React.FC<NoteProps> = ({ note, activeNoteId }) => {
               <button type="button">
                 <i className="fa-solid fa-pen fa-lg cursor-pointer"></i>
               </button>
-              <button>
+              <button
+                onClick={() => handleDelete(note.id)}
+              >
                 <i className="fa-solid fa-trash-can fa-lg cursor-pointer" style={btnColor.red}></i>
               </button>
             </div>
