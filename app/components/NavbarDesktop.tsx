@@ -22,7 +22,7 @@ const NavbarDesktop: React.FC = () => {
   }, []);
 
   return (
-      <div className={`hidden lg:block lg:sticky top-0 ${scrolled && 'bg-white-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-60 shadow-sm' }`}>
+      <div className={`hidden lg:block lg:sticky z-50 top-0 ${scrolled && 'bg-white-800 rounded-md bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-60 ' }`}>
         <div className="flex justify-between">
           <div className="flex flex-row items-center bg-white p-4 my-8 mx-10 rounded-xl shadow-sm w-2/4">
             <i className="fa-solid fa-magnifying-glass"></i>

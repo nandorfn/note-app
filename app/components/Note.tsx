@@ -1,6 +1,7 @@
 'use client'
 import { sanitize } from 'dompurify';
 import { useState } from "react";
+import NoteMenu from './NoteMenu';
 
 interface NoteProps {
   notes: {
@@ -26,17 +27,8 @@ const Note: React.FC<NoteProps> = ({ notes }) => {
             }`}
         >
           <h2 className="lg:text-2xl">{note.title}</h2>
-          <p className='break-all truncate' dangerouslySetInnerHTML={{ __html: note.content.replace(/\n/g, "<br>") }} />
-          {
-            activeNoteId === note.id
-              ? <div className={`absolute left-0 bottom-0 pb-4 w-full bg-green-200`}>
-                <div className='mx-4 flex justify-end gap-4'>
-                  <i className="fa-solid fa-pen"></i>
-                  <i className="fa-solid fa-trash-can"></i>
-                </div>
-              </div>
-              : null
-          }
+          <p className='truncate' dangerouslySetInnerHTML={{ __html: note.content.replace(/\n/g, "<br>") }} />
+            <NoteMenu activeNoteId={activeNoteId} note={note}/>
         </div>
       ))}
     </>
