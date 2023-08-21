@@ -1,6 +1,5 @@
 import FloatingBtn from "@/app/components/FloatingBtn";
 import NoteContainer from "@/app/components/NoteContainer";
-
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 

@@ -31,7 +31,7 @@ const NoteMenu: React.FC<NoteProps> = ({ note, activeNoteId, handleEdit }) => {
         activeNoteId === note.id
           ? <div className='absolute right-2 bottom-0 pb-6 w-full bg-green-200'>
             <div className='mx-4 flex justify-end gap-6'>
-              <button type="button">
+              <button onClick={() => handleEdit(note.id)} type="button">
                 <i className="fa-solid fa-pen fa-lg cursor-pointer"></i>
               </button>
               <button
