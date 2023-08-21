@@ -23,9 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Navbar>
           {children}
-        </Navbar>
         <Script src="https://kit.fontawesome.com/8839dda52d.js" crossOrigin="anonymous" />
       </body>
     </html>

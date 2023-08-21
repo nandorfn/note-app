@@ -17,7 +17,7 @@ const List: React.FC = () => {
     <>
       {listMenu.map(list => (
         <li key={list.id}>
-          <Link className="flex items-center cursor-pointer" href={list.id === 1 ? "/" : `/${list.text}`}>
+          <Link className="flex items-center cursor-pointer" href={list.id === 1 ? "/" : `/${list.text.toLocaleLowerCase()}`}>
             <i className={`${list.icon} fa-xl fa-fw me-8`} style={iconColor}></i>
             <p className=" text-xl text-[#9AA5BB] font-medium">{list.text}</p>
           </Link>

@@ -5,8 +5,11 @@ export default function noteLayout({
 }: {
   children: React.ReactNode
 }) {
-  return <>
-    <Navbar>
-      {children}
-    </Navbar></>
+  return (
+    <>
+      <Navbar>
+        {children}
+      </Navbar>
+    </>
+  )
 }
