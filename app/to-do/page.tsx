@@ -1,7 +1,16 @@
-import Todo from "../components/Todo";
-import TodoContainer from "../components/TodoContainer";
+import Todo from "./components/Todo";
+import TodoContainer from "./components/TodoContainer";
+import type { TaskStatus, TaskScheduleEnum } from "@prisma/client"
 
-const Page = () => {
+interface TaskFormData {
+  title: string;
+  deadline: string;
+  status: TaskStatus;
+  schedule: TaskScheduleEnum;
+  timeSlotId?: number;
+}
+
+const Home = () => {
   const header: string = 'To-do'
 
     return (
@@ -14,4 +23,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default Home;
