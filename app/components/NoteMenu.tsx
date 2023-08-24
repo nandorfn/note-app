@@ -4,6 +4,7 @@ interface NoteProps {
   note: {
     title: string;
     content: string;
+    color: string;
     id: number;
   };
   activeNoteId: number | null;
@@ -29,7 +30,7 @@ const NoteMenu: React.FC<NoteProps> = ({ note, activeNoteId, handleEdit }) => {
     <>
       {
         activeNoteId === note.id
-          ? <div className='absolute right-2 bottom-0 pb-6 w-full bg-green-200'>
+          ? <div className={`absolute right-2 bottom-0 pb-6 w-full ${note.color}`}>
             <div className='mx-4 flex justify-end gap-6'>
               <button onClick={() => handleEdit(note.id)} type="button">
                 <i className="fa-solid fa-pen fa-lg cursor-pointer"></i>

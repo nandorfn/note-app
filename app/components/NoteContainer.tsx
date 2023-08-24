@@ -3,6 +3,7 @@ interface NoteProps {
   notes: {
     title: string;
     content: string;
+    color: string;
     id: number;
   }[];
 }

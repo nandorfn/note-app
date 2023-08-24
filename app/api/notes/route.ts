@@ -8,7 +8,8 @@ export const POST = async (req: Request) => {
   const note = await prisma.note.create({
     data:{
       title: body.title,
-      content: body.content
+      content: body.content,
+      color: body.color
     }
   });
   

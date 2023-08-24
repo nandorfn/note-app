@@ -21,6 +21,7 @@ export const PATCH = async (request: Request, {params}: {params: {id: string}}) 
       data:{
           title: body.title,
           content: body.content,
+          color: body.color,
       }
   });
   return NextResponse.json(note, {status: 200});
