@@ -43,23 +43,29 @@ model Note {
   // user      User   @relation(fields: [userId], references: [id])
 }
 
-// model Todo {
-//   id        Int    @id @default(autoincrement())
-//   title     String
-//   content   String
-//   color     String
-//   createdAt DateTime @default(now())
-//   updatedAt DateTime @updatedAt
-//   userId    Int
-//   user      User   @relation(fields: [userId], references: [id])
-// }
-
-// model Trash {
-//   id          Int      @id @default(autoincrement())
-//   itemType    String   // Type of item: "Note" or "Todo"
-//   itemId      Int      // ID of the deleted item
-//   content     String?  // Content of the deleted item (optional)
-//   userId      Int
-//   user        User     @relation(fields: [userId], references: [id])
-//   deletedAt   DateTime @default(now()) // Automatically set to the current timestamp when an item is deleted
-// }
+enum TaskStatus {
+  PENDING
+  COMPLETED
+}
+model Task {
+  id            Int         @id @default(autoincrement())
+  title         String
+  deadline      DateTime?
+  status        TaskStatus
+  schedule      TaskScheduleEnum?
+  timeSlot      TaskTimeSlot? @relation(fields: [timeSlotId], references: [id])
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  timeSlotId    Int?
+}
+model TaskTimeSlot {
+  id       Int       @id @default(autoincrement())
+  startTime DateTime
+  endTime   DateTime
+  tasks     Task[]
+}
+enum TaskScheduleEnum {
+  TODAY
+  TOMORROW
+  UPCOMING
+}
