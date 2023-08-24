@@ -1,16 +1,10 @@
 import Note from "./Note";
 interface NoteProps {
-  notes: {
-    title: string;
-    content: string;
-    color: string;
-    id: number;
-  }[];
   header: string;
   children: React.ReactNode;
 }
 
-const NoteContainer: React.FC<NoteProps> = ({notes, header, children}) => {
+const NoteContainer: React.FC<NoteProps> = ({header, children}) => {
 
   return (
     <>
