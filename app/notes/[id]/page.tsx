@@ -1,4 +1,5 @@
-import NoteEditor from "@/app/components/NoteEditor";
+import NoteEditor from "../NoteEditor";
+
 const Page: React.FC = () => {
 
     return (

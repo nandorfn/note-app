@@ -6,7 +6,7 @@ const NavbarMenu = ({children}: {children: ReactNode}) => {
 
   return (
     <>
-      <div className="hidden lg:block lg:sticky top-0 bg-white w-80  h-screen p-4 shadow-sm">
+      <div className="hidden lg:block lg:sticky top-0 bg-white w-80  h-screen p-6 shadow-sm">
         <div>
           <Image 
             src={logo}
@@ -15,7 +15,7 @@ const NavbarMenu = ({children}: {children: ReactNode}) => {
             alt="logo"
           />
         </div>
-        <ul  className="flex flex-col pt-8 gap-8 p-6">
+        <ul  className="flex flex-col pt-6 gap-4">
           {children}
         </ul>
       </div>

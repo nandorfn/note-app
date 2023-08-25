@@ -1,5 +1,4 @@
 import { format } from 'date-fns';
-
 interface TodosProps {
   todos: {
     id: number;

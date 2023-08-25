@@ -12,7 +12,7 @@ interface NoteProps {
     status: string;
     startTime: Date | null;
     endTime: Date | null;
-    
+
   }[];
 }
 
@@ -24,19 +24,20 @@ const NoteContainer: React.FC<NoteProps> = ({ header, children, todos }) => {
 
   return (
     <>
-      <div className="relative w-full overflow-y-hidden  bg-white rounded-xl shadow-sm h-screen">
+      <div className="relative w-full overflow-y-hidden  bg-white rounded-xl shadow-sm mb-10">
         {menu &&
-          <div className="absolute flex justify-center w-full h-full rounded-xl  bg-white/5 backdrop-blur-sm">
-            <AddTodo handleMenu={handleMenu}/>
+          <div className="absolute flex justify-center w-full h-full rounded-xl  bg-white/5 backdrop-blur-sm z-50">
+            <AddTodo handleMenu={handleMenu} />
           </div>
         }
-        <div className="p-8 gap-10 flex flex-col">
+        <div className="p-8 gap-10 flex flex-col min-h-[84vh]">
           <h1 className="text-4xl font-medium ">{header}</h1>
           <AddTaskBtn handleMenu={handleMenu} menu={menu} />
-          <div className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4 min-h-screen">
-            {children}
+          
+            <section className="grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-4">
+              {children}
+            </section>
           </div>
-        </div>
       </div>
     </>
   );
