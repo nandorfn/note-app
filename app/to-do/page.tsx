@@ -1,3 +1,4 @@
+import AddTodo from "./components/AddTodo";
 import Todo from "./components/Todo";
 import TodoContainer from "./components/TodoContainer";
 import type { TaskStatus, TaskScheduleEnum } from "@prisma/client"
@@ -15,9 +16,10 @@ const Home = () => {
 
     return (
         <>
-          <TodoContainer header={header}>
+          <AddTodo />
+          {/* <TodoContainer header={header}>
             <Todo />
-          </TodoContainer>
+          </TodoContainer> */}
 
         </>
     );
