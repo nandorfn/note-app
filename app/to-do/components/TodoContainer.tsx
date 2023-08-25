@@ -5,9 +5,18 @@ import AddTodo from "./AddTodo";
 interface NoteProps {
   header: string;
   children: React.ReactNode;
+  todos: {
+    id: number;
+    title: string;
+    deadline: Date | null;
+    status: string;
+    startTime: Date | null;
+    endTime: Date | null;
+    
+  }[];
 }
 
-const NoteContainer: React.FC<NoteProps> = ({ header, children }) => {
+const NoteContainer: React.FC<NoteProps> = ({ header, children, todos }) => {
   const [menu, setMenu] = useState(false);
   const handleMenu = (): void => {
     setMenu(!menu);

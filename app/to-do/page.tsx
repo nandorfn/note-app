@@ -1,23 +1,31 @@
-import AddTodo from "./components/AddTodo";
 import Todo from "./components/Todo";
 import TodoContainer from "./components/TodoContainer";
-import type { TaskStatus, TaskScheduleEnum } from "@prisma/client"
+import { PrismaClient } from "@prisma/client";
+const prisma = new PrismaClient();
 
-interface TaskFormData {
-  title: string;
-  deadline: string;
-  status: TaskStatus;
-  schedule: TaskScheduleEnum;
-  timeSlotId?: number;
+const getTask = async () => {
+  const res = await prisma.task.findMany({
+    select: {
+      id: true,
+      title: true,
+      deadline: true,
+      status: true,
+      startTime: true,
+      endTime: true,
+    },
+  });
+  return res;
 }
 
-const Home = () => {
+
+const Home = async () => {
   const header: string = 'To-do'
+  const todos = await getTask();
 
     return (
         <>
-          <TodoContainer header={header}>
-            <Todo />
+          <TodoContainer header={header} todos={todos}>
+            <Todo todos={todos}/>
           </TodoContainer>
 
         </>

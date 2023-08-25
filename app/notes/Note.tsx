@@ -25,7 +25,7 @@ const Note: React.FC<NoteProps> = ({ notes }) => {
   return (
     <>
       {notes.map((note) => (
-        <div
+        <article
           onClick={() => handleActive(note.id)}
           onDoubleClick={() => handleEdit(note.id)}
           key={note.id}
@@ -35,7 +35,7 @@ const Note: React.FC<NoteProps> = ({ notes }) => {
           <h2 className="lg:text-2xl">{note.title}</h2>
           <p className='truncate' dangerouslySetInnerHTML={{ __html: note.content.replace(/\n/g, "<br>") }} />
           <NoteMenu activeNoteId={activeNoteId} note={note} handleEdit={handleEdit} />
-        </div>
+        </article>
       ))}
 
     </>
