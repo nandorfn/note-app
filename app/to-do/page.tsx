@@ -16,10 +16,9 @@ const Home = () => {
 
     return (
         <>
-          <AddTodo />
-          {/* <TodoContainer header={header}>
+          <TodoContainer header={header}>
             <Todo />
-          </TodoContainer> */}
+          </TodoContainer>
 
         </>
     );

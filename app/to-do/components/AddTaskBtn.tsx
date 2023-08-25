@@ -1,8 +1,11 @@
 'use client'
 import { useState } from "react";
+interface MenuProps {
+  menu: boolean;
+  handleMenu: () => void;
+}
 
-const AddTaskBtn: React.FC = () => {
-  const [form, setForm] = useState(false);
+const AddTaskBtn: React.FC<MenuProps> = ({menu, handleMenu}) => {
 
   const green = {
     color: '#fff',
@@ -10,7 +13,7 @@ const AddTaskBtn: React.FC = () => {
 
     return (
         <>
-          <button className="bg-[#75E6AC] p-3 rounded-md w-36 text-white font-medium">New Task<i className="fa-solid fa-circle-check fa-fw ms-2 fa-lg" style={green}></i></button>
+          <button onClick={handleMenu} className="bg-[#75E6AC] p-3 rounded-md w-36 text-white font-medium">New Task<i className="fa-solid fa-circle-check fa-fw ms-2 fa-lg" style={green}></i></button>
         </>
     );
 };

@@ -12,17 +12,25 @@ interface TaskFormData {
     schedule: TaskScheduleEnum;
     timeSlotId?: number;
 }
+interface MenuProps {
+    handleMenu: () => void;
+    
+}
 
-const AddTodo: React.FC = () => {
+const AddTodo: React.FC<MenuProps> = ({handleMenu}) => {
     const [date, setDate] = useState< Date | null>(new Date());
     const [startTime, setStartTime] = useState<Date | null>(new Date());
     const [endTime, setEndTime] = useState<Date | null>(new Date());
 
 
     const inputStyle: string = 'w-full p-2 bg-gray-100 rounded-sm';
+    const red = {
+        color: '#FF0000'
+    }
     return (
         <>
-            <form className="flex flex-col bg-white shadow-md p-4 w-1/4 rounded-lg">
+            <form className="flex flex-col mt-40 relative bg-white shadow-md p-4 w-1/4 max-h-96 rounded-lg">
+                <button onClick={handleMenu} className="absolute end-4" type="button"><i className="fa-solid fa-circle-xmark fa-fw fa-lg" style={red}></i></button>
                 <h2 className="text-xl text-center">Add Todo</h2>
                 <label htmlFor="title-task">Title: </label>
                 <input className={inputStyle} placeholder="Title" type="text" name="title-task" id="titleTask" />
