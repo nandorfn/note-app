@@ -29,7 +29,7 @@ const Note: React.FC<NoteProps> = ({ notes }) => {
           onClick={() => handleActive(note.id)}
           onDoubleClick={() => handleEdit(note.id)}
           key={note.id}
-          className={`${note.color} rounded-xl h-64 p-4 basis-1/2 overflow-hidden relative ${activeNoteId === note.id ? "border-2 border-black" : ""
+          className={`${note.color} rounded-3xl h-64 p-4 basis-1/2 overflow-hidden relative ${activeNoteId === note.id ? "border-2 border-black" : ""
             }`}
         >
           <h2 className="lg:text-2xl">{note.title}</h2>
