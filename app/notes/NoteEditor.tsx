@@ -9,7 +9,6 @@ const NoteEditor: React.FC = () => {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [color, setColor] = useState<string>('');
-  console.log(color);
 
   const params = useParams();
   useEffect(() => {

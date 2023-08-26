@@ -1,12 +1,9 @@
-'use client'
-import { useState } from "react";
 interface MenuProps {
   menu: boolean;
   handleMenu: () => void;
 }
 
 const AddTaskBtn: React.FC<MenuProps> = ({menu, handleMenu}) => {
-
   const green = {
     color: '#fff',
   }

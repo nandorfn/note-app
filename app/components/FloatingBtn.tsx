@@ -15,14 +15,16 @@ const FloatingBtn: React.FC = () => {
       {activeBtn &&
         <div className="sticky bottom-20 pb-10 left-full me-8 lg:me-20 rounded-t-full w-16 bg-white">
           <div className="flex flex-col gap-4">
-            <Link href="/create/note">
+            <Link href="/notes">
               <button className={`${btnStyle} flex justify-center items-center`}>
                 <i className="fa-solid fa-note-sticky fa-fw fa-lg"></i>
               </button>
             </Link>
-            <button className={`${btnStyle} flex justify-center items-center`}>
-              <i className="fa-solid fa-rectangle-list fa-fw fa-lg"></i>
-            </button>
+            <Link href="/to-do">
+              <button className={`${btnStyle} flex justify-center items-center`}>
+                <i className="fa-solid fa-rectangle-list fa-fw fa-lg"></i>
+              </button>
+            </Link>
           </div>
         </div>
       }

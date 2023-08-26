@@ -4,11 +4,9 @@ import { usePathname } from 'next/navigation'
 
 const List: React.FC = () => {
   const listMenu = [
-    { id: 1, text: 'Home', icon: 'fa-solid fa-house' },
+    { id: 1, text: 'Dashboard', icon: 'fa-solid fa-house' },
     { id: 2, text: 'Notes', icon: 'fa-solid fa-note-sticky' },
-    { id: 3, text: 'To-Do', icon: 'fa-solid fa-rectangle-list' },
-    { id: 4, text: 'Trash', icon: 'fa-solid fa-trash-can' },
-    { id: 5, text: 'Settings', icon: 'fa-solid fa-gear' }
+    { id: 3, text: 'To-Do', icon: 'fa-solid fa-rectangle-list' }
   ]
   const pathname = usePathname();
 
@@ -16,7 +14,7 @@ const List: React.FC = () => {
     <>
       {listMenu.map(list => (
         <li key={list.id} className={`cursor-pointer ${pathname === `/${list.text.toLocaleLowerCase()}` ? 'bg-[#75E6AC] rounded-2xl shadow-inner drops' : ''}`}>
-          <Link className="flex items-center cursor-pointer  p-4" href={list.id === 1 ? "/" : `/${list.text.toLocaleLowerCase()}`}>
+          <Link className="flex items-center cursor-pointer  p-4" href={`/${list.text.toLocaleLowerCase()}`}>
 
           <i
           className={`${list.icon} fa-xl fa-fw me-8`}

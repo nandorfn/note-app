@@ -25,7 +25,6 @@ const page = async () => {
       <NoteContainer notes={notes} header={header}>
         <Note notes={notes}/>
       </NoteContainer>
-      <FloatingBtn />
     </>
   );
 };
