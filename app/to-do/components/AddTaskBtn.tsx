@@ -6,7 +6,6 @@ interface MenuProps {
 }
 
 const AddTaskBtn: React.FC<MenuProps> = ({menu, handleMenu}) => {
-
   const green = {
     color: '#fff',
   }

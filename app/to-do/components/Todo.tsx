@@ -1,6 +1,8 @@
 'use client'
 import { format } from 'date-fns';
 import { useState } from 'react';
+import { useRouter } from "next/navigation";
+import TodoMenu from './TodoMenu';
 interface TodosProps {
   todos: {
     id: number;
@@ -13,29 +15,42 @@ interface TodosProps {
   }[];
 }
 const Todo: React.FC<TodosProps> = ({ todos }) => {
-  const [activeTodoId, setActiveTodoId] = useState<number|null>(null);
-  
+
+  const [activeTodoId, setActiveTodoId] = useState<number | null>(null);
   const handleActive = (noteId: number): void => {
     setActiveTodoId((prevTodoId) => (prevTodoId === noteId ? null : noteId));
+  };
+  const router = useRouter();
+  const handleEdit = (todoId: number): void => {
+    router.push(`to-do/${todoId}`);
   };
 
 
   return (
     <>
       {todos.map((todo) => (
-        <article 
-          key={todo.id} 
+        <article
+          key={todo.id}
           onClick={() => handleActive(todo.id)}
-          className={`flex flex-col relative bg-yellow-300 h-56 basis-1/2 p-4 rounded-3xl ${activeTodoId === todo.id ? "border-2 border-black" : ""
-        }`}>
-          <p className='text-sm'>{todo.deadline ? format(new Date(todo.deadline), 'dd MMM yyyy') : 'N/A'}</p>
-          
+          onDoubleClick={() => handleEdit(todo.id)}
+          className={`
+        flex flex-col relative bg-yellow-300 h-56 basis-1/2 p-4 rounded-3xl 
+        ${activeTodoId === todo.id ? "border-2 border-black" : ""}
+      `}
+        >
+          <p className='text-sm'>
+            {todo.deadline ? format(new Date(todo.deadline), 'dd MMM yyyy') : 'N/A'}
+          </p>
+
           <h2 className='text-4xl py-2'>{todo.title}</h2>
-          
-          <article className='flex flex-row gap-2 text-sm end absolute bottom-4 left-4 opacity-80'>
+
+          <div className='flex flex-row gap-2 text-sm end absolute bottom-4 left-4 opacity-80'>
             <p>{todo.startTime ? format(new Date(todo.startTime), 'h:mm a') : 'N/A'} -</p>
             <p>{todo.endTime ? format(new Date(todo.endTime), 'h:mm a') : 'N/A'}</p>
-          </article>
+          </div>
+
+          {/* Include your TodoMenu component here */}
+          <TodoMenu activeTodoId={activeTodoId} todo={todo} handleEdit={handleEdit} />
         </article>
       ))}
     </>
