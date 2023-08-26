@@ -26,7 +26,7 @@ const NavbarDesktop: React.FC = () => {
         <div className="flex justify-between">
           <div className="flex flex-row items-center bg-white p-4 my-8 mx-10 rounded-xl shadow-sm w-2/4">
             <i className="fa-solid fa-magnifying-glass"></i>
-            <input className="ms-4 w-full focus:outline-none" type="search" placeholder="search notes" />
+            <input className="ms-4 w-full focus:outline-none" type="search" placeholder="search" />
           </div>
           <div className="flex gap-4 px-8 items-center me-10 justify-center">
             <div className="py-3 px-2 bg-blue-400 rounded-full">
