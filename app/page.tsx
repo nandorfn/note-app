@@ -1,12 +1,11 @@
-import NoteContainer from "./components/NoteContainer";
 
+const Home = () => {
 
-export default function Home() {
   return (
     <>
-    <div className="">
-      <NoteContainer />
-    </div>
+      <h1>Login Section</h1>
     </>
   )
 }
+
+export default Home;

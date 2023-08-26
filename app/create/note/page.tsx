@@ -1,13 +1,11 @@
-'use client'
-
+import Editor from "./Editor";
 
 const page: React.FC = () => {
+  
+
     return (
         <>
-          <form>
-            <textarea placeholder="Title" />
-            <textarea placeholder="Content" />
-          </form>
+          <Editor />
         </>
     );
 };
