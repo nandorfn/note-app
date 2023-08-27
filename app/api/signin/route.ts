@@ -10,7 +10,7 @@ const generateSecretKey = (length: number): string => {
 };
 
 const prisma = new PrismaClient();
-const JWT_SECRET = generateSecretKey(32);
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export const POST = async (req: Request, res: NextResponse) => {
   try {
@@ -28,7 +28,7 @@ export const POST = async (req: Request, res: NextResponse) => {
         return NextResponse.json({error: 'Invalid password'}, {status: 401});
       }
       
-      const token = jwt.sign({userName: user.username}, JWT_SECRET, { expiresIn: '1h' });
+      const token = jwt.sign({username: user.username}, JWT_SECRET!, { expiresIn: '1h' });
       return NextResponse.json({token}, {status: 200});
     } catch (error) {
       console.error('Error during login:', error);
