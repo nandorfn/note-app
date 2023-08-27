@@ -21,7 +21,6 @@ const Home = () => {
       const { token } = response.data;
 
       document.cookie = `authToken=${token}; path=/;`;
-      localStorage.setItem('authToken', token);
       if (!token) {
         setError("Please enter a valid data");
       } else {

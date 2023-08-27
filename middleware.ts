@@ -4,7 +4,6 @@ import type { NextRequest } from 'next/server'
 export function middleware(request: NextRequest) {
   const authToken = request.cookies.get('authToken');
   const protectedPaths = ['/notes','/dashboard', '/to-do'];
-  const protectedPaths2 = ['/notes','/dashboard', '/to-do'];
   
   if (authToken && request.nextUrl.pathname === '/') {
     return NextResponse.redirect(new URL('/dashboard', request.url));
