@@ -1,4 +1,4 @@
-import FloatingBtn from "@/app/components/FloatingBtn";
+import { middleware, config } from "../../middleware";
 import NoteContainer from "./NoteContainer";
 import Note from "./Note";
 import { PrismaClient } from "@prisma/client";
@@ -16,7 +16,7 @@ const getNote = async () => {
   return res;
 }
 
-
+export {middleware, config}
 const page = async () => {
   const notes = await getNote();
   const header:string = 'Notes';
