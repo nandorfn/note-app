@@ -25,7 +25,6 @@ const Navbar = ({ children }: { children: ReactNode }) => {
       .find((row) => row.startsWith("authToken="));
 
     let token = null;
-
     if (tokenCookie) {
       token = tokenCookie.substring("authToken=".length);
     }

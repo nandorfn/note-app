@@ -28,7 +28,7 @@ export const POST = async (req: Request, res: NextResponse) => {
         return NextResponse.json({error: 'Invalid password'}, {status: 401});
       }
       
-      const token = jwt.sign({username: user.username}, JWT_SECRET!, { expiresIn: '1h' });
+      const token = jwt.sign({username: user.username, userId: user.id}, JWT_SECRET!, { expiresIn: '1h' });
       return NextResponse.json({token}, {status: 200});
     } catch (error) {
       console.error('Error during login:', error);
