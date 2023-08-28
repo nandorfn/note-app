@@ -5,7 +5,7 @@ interface NoteProps {
     content: string;
     color: string;
     id: number;
-  }[];
+  }[] | undefined;
   header: string;
   children: React.ReactNode;
 }

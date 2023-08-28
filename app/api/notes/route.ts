@@ -9,7 +9,8 @@ export const POST = async (req: Request) => {
     data:{
       title: body.title,
       content: body.content,
-      color: body.color
+      color: body.color,
+      userId: Number(body.userId)
     }
   });
   

@@ -1,24 +1,10 @@
-import FloatingBtn from "@/app/components/FloatingBtn";
 import NoteContainer from "./NoteContainer";
 import Note from "./Note";
-import { PrismaClient } from "@prisma/client";
-const prisma = new PrismaClient();
-
-const getNote = async () => {
-  const res = await prisma.note.findMany({
-    select: {
-      id: true,
-      title: true,
-      content: true,
-      color: true,
-    },
-  });
-  return res;
-}
-
+import { getData } from "../utils/queryDb";
+getData
 
 const page = async () => {
-  const notes = await getNote();
+  const notes = await getData('notes');
   const header:string = 'Notes';
   return (
     <>

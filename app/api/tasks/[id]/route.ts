@@ -23,6 +23,7 @@ export const PATCH = async (request: Request, {params}: {params: {id: string}}) 
           deadline: body.deadline,
           startTime: body.startTime,
           endTime: body.endTime,
+          color: body.color,
       }
   });
   return NextResponse.json(task, {status: 200});

@@ -11,11 +11,10 @@ interface TodosProps {
     status: string;
     startTime: Date | null;
     endTime: Date | null;
-
+    color: string ;
   }[];
 }
 const Todo: React.FC<TodosProps> = ({ todos }) => {
-
   const [activeTodoId, setActiveTodoId] = useState<number | null>(null);
   const handleActive = (noteId: number): void => {
     setActiveTodoId((prevTodoId) => (prevTodoId === noteId ? null : noteId));
@@ -35,8 +34,8 @@ const Todo: React.FC<TodosProps> = ({ todos }) => {
             key={todo.id}
             onClick={() => handleActive(todo.id)}
             onDoubleClick={() => handleEdit(todo.id)}
-            className={`
-              flex flex-col relative bg-yellow-300 h-56 basis-1/2 p-4 rounded-3xl 
+            className={`${todo.color}
+              flex flex-col relative h-56 basis-1/2 p-4 rounded-3xl 
               ${activeTodoId === todo.id ? "border-2 border-black" : ""}
             `}
           >
@@ -44,14 +43,13 @@ const Todo: React.FC<TodosProps> = ({ todos }) => {
               {todo.deadline ? format(new Date(todo.deadline), 'dd MMM yyyy') : 'N/A'}
             </p>
 
-            <h2 className='text-4xl py-2'>{todo.title}</h2>
+            <h2 className='text-ellipsis overflow-hidden text-4xl py-2' dangerouslySetInnerHTML={{ __html: todo.title.replace(/\n/g, "<br>") }} />
 
             <div className='flex flex-row gap-2 text-sm end absolute bottom-4 left-4 opacity-80'>
               <p>{todo.startTime ? format(new Date(todo.startTime), 'h:mm a') : 'N/A'} -</p>
               <p>{todo.endTime ? format(new Date(todo.endTime), 'h:mm a') : 'N/A'}</p>
             </div>
 
-            {/* Include your TodoMenu component here */}
             <TodoMenu activeTodoId={activeTodoId} todo={todo} handleEdit={handleEdit} />
           </article>
         ))
@@ -60,8 +58,8 @@ const Todo: React.FC<TodosProps> = ({ todos }) => {
             key={todo.id}
             onClick={() => handleActive(todo.id)}
             onDoubleClick={() => handleEdit(todo.id)}
-            className={`
-              flex flex-col relative bg-yellow-300 h-56 basis-1/2 p-4 rounded-3xl 
+            className={`${todo.color}
+              flex flex-col relative  h-56 basis-1/2 p-4 rounded-3xl 
               ${activeTodoId === todo.id ? "border-2 border-black" : ""}
             `}
           >
@@ -69,14 +67,13 @@ const Todo: React.FC<TodosProps> = ({ todos }) => {
               {todo.deadline ? format(new Date(todo.deadline), 'dd MMM yyyy') : 'N/A'}
             </p>
 
-            <h2 className='text-4xl py-2'>{todo.title}</h2>
+            <h2 className='text-ellipsis overflow-hidden text-2xl lg:text-4xl py-2 h-2/3' >{todo.title}</h2>
 
             <div className='flex flex-row gap-2 text-sm end absolute bottom-4 left-4 opacity-80'>
               <p>{todo.startTime ? format(new Date(todo.startTime), 'h:mm a') : 'N/A'} -</p>
               <p>{todo.endTime ? format(new Date(todo.endTime), 'h:mm a') : 'N/A'}</p>
             </div>
 
-            {/* Include your TodoMenu component here */}
             <TodoMenu activeTodoId={activeTodoId} todo={todo} handleEdit={handleEdit} />
           </article>
         ))}

@@ -2,21 +2,40 @@
 
 import axios from "axios";
 import DoneBtn from "@/app/components/DoneBtn";
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 const Editor: React.FC = () => {
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
   const [color, setColor] = useState<string>('bg-lime-300');
-
+  const [userId, setUserID] = useState<string>('');
+  
   const router = useRouter();
+  useEffect(() => {
+    const tokenCookie = document.cookie
+      .split("; ")
+      .find((row) => row.startsWith("authToken="));
+
+    let token = null;
+    if (tokenCookie) {
+      token = tokenCookie.substring("authToken=".length);
+    }
+    if (token) {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace('-', '+').replace('_', '/');
+      const decodedToken = JSON.parse(window.atob(base64));
+      setUserID(decodedToken.userId);
+    }
+  }, []);
+
   const handleClick = async (e: SyntheticEvent) => {
     e.preventDefault();
     await axios.post("/api/notes", {
       title: title,
       content: content,
       color: color,
+      userId: userId,
     });
     setTitle('');
     setContent('');

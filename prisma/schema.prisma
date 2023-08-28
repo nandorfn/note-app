@@ -5,7 +5,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
 
 // model AuthProfile {
@@ -20,17 +21,14 @@ datasource db {
 //   image        String?  // Profile image URL from the authentication session
 // }
 
-// model User {
-//   id          Int       @id @default(autoincrement())
-//   username    String    @unique
-//   email       String    @unique
-//   image       String?
-//   name        String?
-//   notes       Note[]
-//   todos       Todo[]
-//   trashed     Trash[]
-//   authProfiles AuthProfile[]
-// }
+model User {
+  id          Int       @id @default(autoincrement())
+  username    String    @unique
+  email       String    @unique
+  password    String
+  notes       Note[]
+  tasks       Task[]
+}
 
 model Note {
   id        Int    @id @default(autoincrement())
@@ -39,18 +37,21 @@ model Note {
   color     String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  // userId    Int
-  // user      User   @relation(fields: [userId], references: [id])
+  userId    Int
+  user      User   @relation(fields: [userId], references: [id])
 }
 
 
 model Task {
+  userId    Int
+  user      User   @relation(fields: [userId], references: [id])
   id            Int         @id @default(autoincrement())
   title         String
   deadline      DateTime?
   status        String
   startTime     DateTime?
   endTime       DateTime?
+  color         String
   createdAt     DateTime    @default(now())
   updatedAt     DateTime    @updatedAt
 }

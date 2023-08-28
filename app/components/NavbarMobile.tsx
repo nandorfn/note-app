@@ -1,7 +1,17 @@
 'use client'
 import { ReactNode, useState } from "react";
+import List from "./List";
+import LogoutMenu from "./LogoutMenu";
+interface NavDeskProps {
+  handleLogout: () => void;
+  handleAlert: () => void;
+  handleMenuLogout: () => void;
+  menuLogout: boolean;
+  username: string;
+}
 
-const NavbarMobile = ({children}: {children: ReactNode}) => {
+
+const NavbarMobile: React.FC<NavDeskProps> = ({ handleMenuLogout, menuLogout, handleLogout, handleAlert, username }) => {
   const menuStyle: string = "absolute bg-white w-full h-screen shadow-2xl p-4 duration-500 ease-in-out "
   const [menu, setMenu] = useState(false);
   const handleMenu = (): void => {
@@ -23,8 +33,18 @@ const NavbarMobile = ({children}: {children: ReactNode}) => {
         {menu &&
           <div className={menuStyle}>
             <ul className="flex flex-col gap-8 p-6">
-              {children}
+            <div className="flex justify-between items-center bg-[#75E6AC] p-4 rounded-2xl shadow-inner drops">
+            <i className="fa-solid fa-user md:fa-lg lg:fa-xl fa-fw me-8"></i>
+              <LogoutMenu
+                handleNavMenu={handleMenu}
+                handleMenu={handleMenuLogout}
+                handleAlert={handleAlert}
+                menu={menuLogout}
+                username={username} />
+            </div>
+              <List />
             </ul>
+
           </div>
         }
       </div>

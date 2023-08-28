@@ -1,24 +1,9 @@
 -- CreateTable
-CREATE TABLE "AuthProfile" (
-    "id" SERIAL NOT NULL,
-    "userId" INTEGER NOT NULL,
-    "provider" TEXT NOT NULL,
-    "providerId" TEXT NOT NULL,
-    "providerType" TEXT NOT NULL,
-    "email" TEXT,
-    "name" TEXT,
-    "image" TEXT,
-
-    CONSTRAINT "AuthProfile_pkey" PRIMARY KEY ("id")
-);
-
--- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "username" TEXT NOT NULL,
     "email" TEXT NOT NULL,
-    "image" TEXT,
-    "name" TEXT,
+    "password" TEXT NOT NULL,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -37,16 +22,19 @@ CREATE TABLE "Note" (
 );
 
 -- CreateTable
-CREATE TABLE "Todo" (
+CREATE TABLE "Task" (
+    "userId" INTEGER NOT NULL,
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
-    "content" TEXT NOT NULL,
+    "deadline" TIMESTAMP(3),
+    "status" TEXT NOT NULL,
+    "startTime" TIMESTAMP(3),
+    "endTime" TIMESTAMP(3),
     "color" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "userId" INTEGER NOT NULL,
 
-    CONSTRAINT "Todo_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Task_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateIndex
@@ -56,10 +44,7 @@ CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- AddForeignKey
-ALTER TABLE "AuthProfile" ADD CONSTRAINT "AuthProfile_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
-
--- AddForeignKey
 ALTER TABLE "Note" ADD CONSTRAINT "Note_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Todo" ADD CONSTRAINT "Todo_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Task" ADD CONSTRAINT "Task_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
