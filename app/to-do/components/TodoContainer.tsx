@@ -12,6 +12,7 @@ interface NoteProps {
     status: string;
     startTime: Date | null;
     endTime: Date | null;
+    color: string;
   }[];
 }
 

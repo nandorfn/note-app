@@ -11,11 +11,10 @@ interface TodosProps {
     status: string;
     startTime: Date | null;
     endTime: Date | null;
-
+    color: string ;
   }[];
 }
 const Todo: React.FC<TodosProps> = ({ todos }) => {
-
   const [activeTodoId, setActiveTodoId] = useState<number | null>(null);
   const handleActive = (noteId: number): void => {
     setActiveTodoId((prevTodoId) => (prevTodoId === noteId ? null : noteId));
@@ -35,8 +34,8 @@ const Todo: React.FC<TodosProps> = ({ todos }) => {
             key={todo.id}
             onClick={() => handleActive(todo.id)}
             onDoubleClick={() => handleEdit(todo.id)}
-            className={`
-              flex flex-col relative bg-yellow-300 h-56 basis-1/2 p-4 rounded-3xl 
+            className={`${todo.color}
+              flex flex-col relative h-56 basis-1/2 p-4 rounded-3xl 
               ${activeTodoId === todo.id ? "border-2 border-black" : ""}
             `}
           >
@@ -59,8 +58,8 @@ const Todo: React.FC<TodosProps> = ({ todos }) => {
             key={todo.id}
             onClick={() => handleActive(todo.id)}
             onDoubleClick={() => handleEdit(todo.id)}
-            className={`
-              flex flex-col relative bg-yellow-300 h-56 basis-1/2 p-4 rounded-3xl 
+            className={`${todo.color}
+              flex flex-col relative  h-56 basis-1/2 p-4 rounded-3xl 
               ${activeTodoId === todo.id ? "border-2 border-black" : ""}
             `}
           >

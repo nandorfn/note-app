@@ -9,6 +9,7 @@ import Link from "next/link";
 
 const TodoEditor: React.FC = () => {
   const [title, setTitle] = useState<string>('');
+  const [color, setColor] = useState<string>('');
   const [deadline, setDeadline] = useState<Date>(new Date());
   const [startTime, setStartTime] = useState<Date>(new Date());
   const [endTime, setEndTime] = useState<Date>(new Date());
@@ -21,6 +22,7 @@ const TodoEditor: React.FC = () => {
         setDeadline(response.data.deadline);
         setStartTime(response.data.startTime);
         setEndTime(response.data.endTime);
+        setColor(response.data.color);
       })
       .catch(error => console.error(error));
   }, [params.id]);
@@ -34,6 +36,7 @@ const TodoEditor: React.FC = () => {
       deadline: deadline,
       startTime: startTime,
       endTime: endTime,
+      color: color,
     });
     router.push('/to-do');
     router.refresh();
@@ -88,6 +91,13 @@ const TodoEditor: React.FC = () => {
             dateFormat="h:mm aa"
           />
         </div>
+        <select onChange={(e) => setColor(e.target.value)} className={inputStyle}>
+                    <option value="bg-lime-300">Green</option>
+                    <option value="bg-amber-100">Amber White</option>
+                    <option value="bg-sky-300">Sky Blue</option>
+                    <option value="bg-orange-400">Orange</option>
+                    <option value="bg-yellow-300">Yellow</option>
+                </select>
         <button onClick={handleUpdate} className="bg-blue-300 rounded-md p-2 text-white" type="submit">Update</button>
       </form>
     </>

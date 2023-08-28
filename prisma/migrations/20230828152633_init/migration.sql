@@ -1,12 +1,3 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Data` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE "Data";
-
 -- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
@@ -39,6 +30,7 @@ CREATE TABLE "Task" (
     "status" TEXT NOT NULL,
     "startTime" TIMESTAMP(3),
     "endTime" TIMESTAMP(3),
+    "color" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

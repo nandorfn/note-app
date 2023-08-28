@@ -15,6 +15,7 @@ const AddTodo: React.FC<MenuProps> = ({ handleMenu }) => {
     const [deadline, setDeadline] = useState<Date>(new Date());
     const [startTime, setStartTime] = useState<Date>(new Date());
     const [endTime, setEndTime] = useState<Date>(new Date());
+    const [color, setColor] = useState<string>('bg-lime-300');
     const router = useRouter();
 
     const [userId, setUserID] = useState<string>('');
@@ -43,10 +44,12 @@ const AddTodo: React.FC<MenuProps> = ({ handleMenu }) => {
             deadline: deadline,
             startTime: startTime,
             endTime: endTime,
+            color: color,
             userId: userId,
         });
         handleMenu();
         setTitle('')
+        setColor('')
         setDeadline(new Date());
         setStartTime(new Date());
         setEndTime(new Date());
@@ -103,6 +106,13 @@ const AddTodo: React.FC<MenuProps> = ({ handleMenu }) => {
                         dateFormat="h:mm aa"
                     />
                 </div>
+                <select onChange={(e) => setColor(e.target.value)} className={inputStyle}>
+                    <option value="bg-lime-300">Green</option>
+                    <option value="bg-amber-100">Amber White</option>
+                    <option value="bg-sky-300">Sky Blue</option>
+                    <option value="bg-orange-400">Orange</option>
+                    <option value="bg-yellow-300">Yellow</option>
+                </select>
                 <button onClick={handleSubmit} className="bg-blue-300 rounded-md p-2 text-white" type="submit">Submit</button>
             </form>
         </>
