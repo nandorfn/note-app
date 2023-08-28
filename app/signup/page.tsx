@@ -3,6 +3,7 @@ import axios from "axios";
 import { useState, SyntheticEvent } from "react";
 import { useRouter } from "next/navigation";
 import AuthLayout from "../components/AuthLayout";
+import Link from "next/link";
 
 
 const Page: React.FC = () => {
@@ -49,6 +50,11 @@ const Page: React.FC = () => {
           </fieldset>
 
           <button className="w-100 bg-black rounded-md p-2 text-white mt-4" onClick={handleSubmit} type="submit">Sign Up</button>
+          <p className="text-sm text-gray-600">Already have an account?
+            <Link href='/'>
+              <button className="text-black ms-1" type="submit"> Sign In here</button>
+            </Link>
+          </p>
         </form>
       </AuthLayout>
     </>

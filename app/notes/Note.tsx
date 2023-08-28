@@ -9,7 +9,7 @@ interface NoteProps {
     content: string;
     color: string;
     id: number;
-  }[];
+  }[] | undefined;
 }
 const Note: React.FC<NoteProps> = ({ notes }) => {
   const [activeNoteId, setActiveNoteId] = useState<number | null>(null);
@@ -24,7 +24,7 @@ const Note: React.FC<NoteProps> = ({ notes }) => {
 
   return (
     <>
-      {notes.map((note) => (
+      {notes && notes.map((note) => (
         <article
           onClick={() => handleActive(note.id)}
           onDoubleClick={() => handleEdit(note.id)}
@@ -37,6 +37,7 @@ const Note: React.FC<NoteProps> = ({ notes }) => {
           <NoteMenu activeNoteId={activeNoteId} note={note} handleEdit={handleEdit} />
         </article>
       ))}
+
 
     </>
   );

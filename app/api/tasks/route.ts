@@ -12,6 +12,7 @@
           status: 'PENDING',
           startTime: body.startTime,
           endTime: body.endTime,
+          userId: Number(body.userId),
         }
       });
   

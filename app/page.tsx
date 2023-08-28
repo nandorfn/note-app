@@ -56,13 +56,13 @@ const Home = () => {
 
           <fieldset className="flex flex-col">
             <label htmlFor="email">Email</label>
-            <input onChange={(e) => setEmail(e.target.value)} className="p-2 rounded-md mt-1" type="email" name="email" placeholder="Please enter your email" />
+            <input onChange={(e) => setEmail(e.target.value)} className="p-2 rounded-md mt-1 bg-gray-200 " type="email" name="email" placeholder="Please enter your email" />
             <p className="text-red-500">{invalidUser}</p>
           </fieldset>
 
           <fieldset className="flex flex-col">
             <label htmlFor="password">Password</label>
-            <input onChange={(e) => setPassword(e.target.value)} className="p-2 rounded-md mt-1" type="password" name="password" placeholder="Please enter your password" />
+            <input onChange={(e) => setPassword(e.target.value)} className="p-2 rounded-md mt-1 bg-gray-200 " type="password" name="password" placeholder="Please enter your password" />
             <p className="text-red-500">{invalidPassword}</p>
           </fieldset>
           <button onClick={handleSignIn} className="w-100 bg-black rounded-md p-2 text-white" type="submit">Sign In</button>

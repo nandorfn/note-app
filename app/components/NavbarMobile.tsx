@@ -32,7 +32,9 @@ const NavbarMobile: React.FC<NavDeskProps> = ({ handleMenuLogout, menuLogout, ha
         </div>
         {menu &&
           <div className={menuStyle}>
-            <div className="flex justify-end">
+            <ul className="flex flex-col gap-8 p-6">
+            <div className="flex justify-between items-center bg-[#75E6AC] p-4 rounded-2xl shadow-inner drops">
+            <i className="fa-solid fa-user md:fa-lg lg:fa-xl fa-fw me-8"></i>
               <LogoutMenu
                 handleNavMenu={handleMenu}
                 handleMenu={handleMenuLogout}
@@ -40,7 +42,6 @@ const NavbarMobile: React.FC<NavDeskProps> = ({ handleMenuLogout, menuLogout, ha
                 menu={menuLogout}
                 username={username} />
             </div>
-            <ul className="flex flex-col gap-8 p-6">
               <List />
             </ul>
 

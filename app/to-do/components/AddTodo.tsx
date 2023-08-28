@@ -1,7 +1,7 @@
 'use client'
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -17,6 +17,25 @@ const AddTodo: React.FC<MenuProps> = ({ handleMenu }) => {
     const [endTime, setEndTime] = useState<Date>(new Date());
     const router = useRouter();
 
+    const [userId, setUserID] = useState<string>('');
+
+    useEffect(() => {
+        const tokenCookie = document.cookie
+            .split("; ")
+            .find((row) => row.startsWith("authToken="));
+
+        let token = null;
+        if (tokenCookie) {
+            token = tokenCookie.substring("authToken=".length);
+        }
+        if (token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace('-', '+').replace('_', '/');
+            const decodedToken = JSON.parse(window.atob(base64));
+            setUserID(decodedToken.userId);
+        }
+    }, []);
+
     const handleSubmit = async (e: SyntheticEvent) => {
         e.preventDefault();
         await axios.post("/api/tasks", {
@@ -24,6 +43,7 @@ const AddTodo: React.FC<MenuProps> = ({ handleMenu }) => {
             deadline: deadline,
             startTime: startTime,
             endTime: endTime,
+            userId: userId,
         });
         handleMenu();
         setTitle('')
@@ -44,7 +64,7 @@ const AddTodo: React.FC<MenuProps> = ({ handleMenu }) => {
                 <h2 className="text-xl text-center pt-8">Add Todo</h2>
                 <div>
                     <label htmlFor="title-task">Title </label>
-                    <input onChange={(e) => setTitle(e.target.value)} className={inputStyle} placeholder="Title" type="text"  />
+                    <input onChange={(e) => setTitle(e.target.value)} className={inputStyle} placeholder="Title" type="text" />
                 </div>
                 <div className="flex flex-col">
                     <label htmlFor="deadline-task">Date</label>
